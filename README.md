@@ -8,13 +8,14 @@ Open Weather Radio is a docker container the leverages [RTL-SDR](https://amzn.to
 
 
 ## Requirements
-* RTL-SDR(https://amzn.to/3au9W0J)
+* [RTL-SDR](https://amzn.to/3au9W0J)
 * Docker
 
 ## Optional
 * MQTT Broker
 
 ## How to use:
+Find the NWR station for your location by navigating to you state and county [here](https://www.weather.gov/nwr/station_listing). Use this frequncy for the freq varable below.
 
 ### Environment varable:
 | Varable | Description | Required | Default | Example |
