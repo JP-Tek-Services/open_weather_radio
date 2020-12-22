@@ -34,7 +34,7 @@ else
     then
         export mqttport=1883
     fi
-    
+    ./scripts/mqtt.py status &
     mqtt='--call scripts/mqtt.py --command "{event}" "{MESSAGE}" "{ORG}" "{EEE}" "{PSSCCC}" "{TTTT}" "{JJJHHMM}" "{LLLLLLLL}" "{LANG}"'
 fi
 
@@ -45,5 +45,4 @@ else
     logenable='--loglevel'
 fi
 #Run
-./scripts/mqtt.py status &
 dsame.py $logenable $dsamelog $mqtt --source scripts/owr.sh
