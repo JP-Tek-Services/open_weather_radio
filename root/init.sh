@@ -18,11 +18,11 @@ then
 else
     if [ -z "$gain" ]
     then
-        export $gain=40
+        export gain=40
     fi
     if [ -z "$ppm" ]
     then
-        export $ppm=0
+        export ppm=0
     fi
 fi
 #set defaults
