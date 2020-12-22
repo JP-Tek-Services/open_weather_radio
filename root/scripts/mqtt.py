@@ -48,7 +48,7 @@ def owr_status(sc):
     client.publish("open_weather_radio/status","online")
     client.disconnect()
     client.loop_stop()
-    s.enter(60, 1, owr_status, (sc,))
+    s.enter(60, 5, owr_status, (sc,))
     return
 
 #Send SAME message when triggered
@@ -88,7 +88,11 @@ def owr_send_alert():
     return
 
 if sys.argv[1] == 'status':
-    s.enter(60, 1, owr_status, (s,))
+    print("Sending MQTT Online update")
+    client.publish("open_weather_radio/status","online")
+    client.disconnect()
+    client.loop_stop()
+    s.enter(60, 5, owr_status, (s,))
     s.run()
 else:
    owr_send_alert()
