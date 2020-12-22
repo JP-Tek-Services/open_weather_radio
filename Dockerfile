@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ubuntu:21.04
+ARG BUILD_FROM
 FROM $BUILD_FROM
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -34,7 +34,7 @@ RUN git clone https://github.com/Jpeterson37/dsame.git && \
 #VLC user for ogg http stream
 RUN useradd -m vlcuser
 
-# Main UI port
+#http ogg stream port
 EXPOSE 8080
 
 ENV feq=162.550M
