@@ -1,4 +1,4 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=ubuntu:21.04
 FROM $BUILD_FROM
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
