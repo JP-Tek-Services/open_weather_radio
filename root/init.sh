@@ -18,11 +18,11 @@ then
 else
     if [ -z "$gain" ]
     then
-        export $gain=40
+        export gain=40
     fi
     if [ -z "$ppm" ]
     then
-        export $ppm=0
+        export ppm=0
     fi
 fi
 #set defaults
@@ -34,7 +34,7 @@ else
     then
         export mqttport=1883
     fi
-    
+    ./scripts/mqtt.py status &
     mqtt='--call scripts/mqtt.py --command "{event}" "{MESSAGE}" "{ORG}" "{EEE}" "{PSSCCC}" "{TTTT}" "{JJJHHMM}" "{LLLLLLLL}" "{LANG}"'
 fi
 
@@ -45,5 +45,4 @@ else
     logenable='--loglevel'
 fi
 #Run
-./scripts/mqtt.py status &
 dsame.py $logenable $dsamelog $mqtt --source scripts/owr.sh

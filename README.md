@@ -20,7 +20,7 @@ Find the NWR station for your location by navigating to you state and county [he
 ### Environment varable:
 | Varable | Description | Required | Default | Example |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| freq | Frequency for [NWR stations](https://www.weather.gov/nwr/station_listing) | no | 162.550M | -e freq=162.550M
+| freq | Frequency for [NWR stations](https://www.weather.gov/nwr/station_listing) | no | 162.550M | -e freq=162.550M |
 | ppm | ppm error | no | 0 | -e ppm=0 |
 | gain | Tuner gain | no | 40 | -e gain=40 |
 | dsamelog | Set log level (int 1-10) | no | | -e dsamelog=10 |
