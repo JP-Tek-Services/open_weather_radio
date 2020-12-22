@@ -1,7 +1,7 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-SHELL ["/bin/bash", "-c"]
+SHELL ["/bin/bash"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 
