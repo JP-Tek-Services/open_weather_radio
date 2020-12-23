@@ -8,6 +8,7 @@ export dsamelog=$dsamelog
 export mqttsvr=$mqttsvr
 export mqttusr=$mqttusr
 export mqttpwd=$mqttpwd
+export vlclogs=$vlclogs
 
 
 #Check Requirements
@@ -34,6 +35,7 @@ else
     then
         export mqttport=1883
     fi
+    echo "Starting MQTT Status updates"
     ./scripts/mqtt.py status &
     mqtt='--call scripts/mqtt.py --command "{event}" "{MESSAGE}" "{ORG}" "{EEE}" "{PSSCCC}" "{TTTT}" "{JJJHHMM}" "{LLLLLLLL}" "{LANG}"'
 fi
@@ -43,6 +45,10 @@ then
     logenable=''
 else
     logenable='--loglevel'
+fi
+if [ -z "$vlclogs" ]
+then
+    export vlclogs='--quiet'
 fi
 #Run
 dsame.py $logenable $dsamelog $mqtt --source scripts/owr.sh
