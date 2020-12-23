@@ -4,11 +4,13 @@
 export ppm=$ppm
 export freq=$freq
 export gain=$gain
+export same=$same
 export dsamelog=$dsamelog
 export mqttsvr=$mqttsvr
 export mqttusr=$mqttusr
 export mqttpwd=$mqttpwd
 export vlclogs=$vlclogs
+
 
 
 #Check Requirements
@@ -50,5 +52,12 @@ if [ -z "$vlclogs" ]
 then
     export vlclogs='--quiet'
 fi
+if [ -z "$same" ]
+then
+    export same=''
+else
+    export samecode='--same'
+fi
+
 #Run
-dsame.py $logenable $dsamelog $mqtt --source scripts/owr.sh
+dsame.py $samecode $same $logenable $dsamelog $mqtt --source scripts/owr.sh
