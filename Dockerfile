@@ -1,12 +1,14 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-SHELL ["/bin/bash"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 #Install Prereqs
-RUN apt-get update && apt-get install -y cmake wget pulseaudio
+RUN apt-get update && apt-get install -y cmake \
+    wget \
+    pulseaudio
 RUN apt-get install --no-install-recommends --yes \ 
     curl \
     tzdata  \
