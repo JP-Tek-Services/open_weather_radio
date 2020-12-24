@@ -23,6 +23,7 @@ Find the NWR station for your location by navigating to you state and county [he
 | freq | Frequency for [NWR stations](https://www.weather.gov/nwr/station_listing) | no | 162.550M | -e freq=162.550M |
 | ppm | ppm error | no | 0 | -e ppm=0 |
 | gain | Tuner gain | no | 40 | -e gain=40 |
+| same | SAME code to use | no | | -e same="029165 029161 02916"|
 | dsamelog | Set log level (int 1-10) | no | | -e dsamelog=10 |
 | mqttsvr | MQTT Broker server address | no | | -e mqttsvr=192.168.0.x |
 | mqttport | MQTT Broker Port | no | 1883 | -e mqttport=1883 |
