@@ -3,10 +3,6 @@ name: Build multiarch Open Weather Radio
 on:
   push:
     branches: dev
-    paths:
-        - 'root/**'
-        - 'Dockerfile'
-        - '.github/workflows/**'
 
 jobs:
   test_build:
@@ -23,4 +19,4 @@ jobs:
             --tag jptekservices/open-weather-radio:latest \
             --tag jptekservices/open-weather-radio:0.0.4 \
             --platform linux/amd64,linux/arm64 .
-            
+
