@@ -3,6 +3,10 @@ name: Build multiarch Open Weather Radio
 on:
   push:
     branches: dev
+    paths:
+        - 'root/**'
+        - 'Dockerfile'
+        - '.github/workflows/**'
 
 jobs:
   test_build:
@@ -10,6 +14,11 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
+      - name: install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: build the image
