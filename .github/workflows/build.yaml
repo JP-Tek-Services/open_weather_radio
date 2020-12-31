@@ -3,9 +3,13 @@ name: Build multiarch Open Weather Radio
 on:
   push:
     branches: main
+    paths:
+        - 'root/**'
+        - 'Dockerfile'
+        - '.github/workflows/**'
 
 jobs:
-  build:
+  build_push:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
