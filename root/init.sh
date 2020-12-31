@@ -12,9 +12,7 @@ export mqttpwd=$mqttpwd
 export vlclogs=$vlclogs
 export test=$test
 
-set -e
 
-trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 #Check Requirements
 if [ -z "$feq" ] && [ -z "$test" ]
@@ -42,9 +40,9 @@ else
     fi
     echo "Starting MQTT Status updates"
     ./scripts/mqtt.py status &
-    #mqttclientprocess=$!
-    #trap 'kill -9 $mqttclientprocess' EXIT
-    mqtt='--call ./scripts/mqtt.py --command {event} {MESSAGE} {ORG} {EEE} {PSSCCC} {TTTT} {JJJHHMM} {LLLLLLLL} {LANG}'
+    mqttclientprocess=$!
+    trap 'kill -9 $mqttclientprocess' EXIT
+    mqtt='--call scripts/mqtt.py --command {event} {MESSAGE} {ORG} {EEE} {PSSCCC} {TTTT} {JJJHHMM} {LLLLLLLL} {LANG}'
 fi
 
 if [ -z "$dsamelog" ]
@@ -59,18 +57,16 @@ then
 fi
 if [ -z "$same" ]
 then
-    export same=''
+
 else
     export samecode='--same'
 fi
 
 if [ "$test" = true ]
 then
-    echo "test 2"
-    echo $samecode $same $logenable $dsamelog $mqtt
     sleep 10
     dsame.py $samecode $same $logenable $dsamelog $mqtt --msg "ZCZC-WXR-RWT-020103-020209-020091-020121-029047-029165-029095-029037+0030-1051700-KEAX/NWS"
-    sleep 20
+    exit 0
 else
     #Run
     dsame.py $samecode $same $logenable $dsamelog $mqtt --source scripts/owr.sh
