@@ -3,9 +3,9 @@ name: Build multiarch Open Weather Radio
 on:
   push:
     branches: dev
-  paths:
-      - 'root/**'
-      - 'Dockerfile'
+    paths:
+        - 'root/**'
+        - 'Dockerfile'
 
 jobs:
   build:
@@ -25,5 +25,5 @@ jobs:
           docker buildx build \
             --build-arg BUILD_FROM="ubuntu:21.04" \
             --tag jptekservices/open-weather-radio:latest \
-            --tag jptekservices/open-weather-radio:$GITHUB_REF \
+            --tag jptekservices/open-weather-radio:0.0.4 \
             --platform linux/amd64,linux/arm64 .
