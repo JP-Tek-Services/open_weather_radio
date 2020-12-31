@@ -7,6 +7,8 @@ on:
         - 'root/**'
         - 'Dockerfile'
         - '.github/workflows/**'
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
@@ -26,5 +28,5 @@ jobs:
           docker buildx build \
             --build-arg BUILD_FROM="ubuntu:21.04" \
             --tag jptekservices/open-weather-radio:latest \
-            --tag jptekservices/open-weather-radio:0.0.4 \
+            --tag jptekservices/open-weather-radio:${{ steps.docker_meta.outputs.tags }} \
             --platform linux/amd64,linux/arm64 .
