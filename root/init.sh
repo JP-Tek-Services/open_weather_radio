@@ -67,6 +67,7 @@ fi
 if [ "$test" = true ]
 then
     sleep 10
+    echo "test 1"
     dsame.py $samecode $same $logenable $dsamelog $mqtt --msg "ZCZC-WXR-RWT-020103-020209-020091-020121-029047-029165-029095-029037+0030-1051700-KEAX/NWS"
     sleep 20
 else
