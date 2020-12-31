@@ -44,7 +44,7 @@ else
     ./scripts/mqtt.py status &
     mqttclientprocess=$!
     trap 'kill -9 $mqttclientprocess' EXIT
-    mqtt='--call scripts/mqtt.py --command {event} {MESSAGE} {ORG} {EEE} {PSSCCC} {TTTT} {JJJHHMM} {LLLLLLLL} {LANG}'
+    mqtt='--call ./scripts/mqtt.py --command {event} {MESSAGE} {ORG} {EEE} {PSSCCC} {TTTT} {JJJHHMM} {LLLLLLLL} {LANG}'
 fi
 
 if [ -z "$dsamelog" ]
@@ -68,7 +68,6 @@ if [ "$test" = true ]
 then
     sleep 10
     dsame.py $samecode $same $logenable $dsamelog $mqtt --msg "ZCZC-WXR-RWT-020103-020209-020091-020121-029047-029165-029095-029037+0030-1051700-KEAX/NWS"
-    exit 0
 else
     #Run
     dsame.py $samecode $same $logenable $dsamelog $mqtt --source scripts/owr.sh
