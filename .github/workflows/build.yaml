@@ -23,4 +23,4 @@ jobs:
             --build-arg BUILD_FROM="ubuntu:21.04" \
             --tag jptekservices/open-weather-radio:latest \
             --tag jptekservices/open-weather-radio:0.0.4 \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 .
+            --platform linux/amd64,linux/arm64 .
