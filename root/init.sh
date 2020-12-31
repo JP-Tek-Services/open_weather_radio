@@ -42,8 +42,8 @@ else
     fi
     echo "Starting MQTT Status updates"
     ./scripts/mqtt.py status &
-    mqttclientprocess=$!
-    trap 'kill -9 $mqttclientprocess' EXIT
+    #mqttclientprocess=$!
+    #trap 'kill -9 $mqttclientprocess' EXIT
     mqtt='--call ./scripts/mqtt.py --command {event} {MESSAGE} {ORG} {EEE} {PSSCCC} {TTTT} {JJJHHMM} {LLLLLLLL} {LANG}'
 fi
 
