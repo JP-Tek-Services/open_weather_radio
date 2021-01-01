@@ -58,6 +58,7 @@ fi
 if [ -z "$same" ]
 then
     unset same
+    unset samecode
 else
     export samecode='--same'
 fi
