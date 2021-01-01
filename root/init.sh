@@ -32,7 +32,7 @@ fi
 #set defaults
 if [ -z "$mqttsvr" ]; 
 then
-    mqtt=''
+    unset mqtt
 else
     if [ -z "$mqttport" ]
     then
@@ -47,7 +47,7 @@ fi
 
 if [ -z "$dsamelog" ]
 then
-    logenable=''
+    unset logenable
 else
     logenable='--loglevel'
 fi
@@ -57,7 +57,7 @@ then
 fi
 if [ -z "$same" ]
 then
-
+    unset same
 else
     export samecode='--same'
 fi
