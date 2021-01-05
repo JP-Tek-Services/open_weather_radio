@@ -26,6 +26,6 @@ jobs:
           docker buildx build \
             --build-arg BUILD_FROM="ubuntu:21.04" \
             --tag jptekservices/open-weather-radio:latest \
-            --tag jptekservices/open-weather-radio:0.0.4 \
+            --tag jptekservices/open-weather-radio:0.0.5 \
             --platform linux/amd64,linux/arm64 .
 
