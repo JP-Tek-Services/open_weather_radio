@@ -9,7 +9,7 @@ on:
         - '.github/workflows/**'
 
 jobs:
-  build_push:
+  build_push_release:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
