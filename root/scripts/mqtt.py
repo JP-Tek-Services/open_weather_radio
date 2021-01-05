@@ -86,14 +86,17 @@ def mqtt_disconnect(client):
     Connected = False
 
 #MQTT status topic
-def owr_status(s):
-    client = mqtt_connect()
-    print(datetime.datetime.now(),"- Sending MQTT online")
-    client.publish("open_weather_radio/status","online")
-    client.publish("open_weather_radio/alerts",json.dumps(build_alert()))
-    mqtt_disconnect(client)
-    s.enter(60, 5, owr_status, (s,))
-    s.run()
+def owr_status():
+    while True:
+        try:
+            client = mqtt_connect()
+            print(datetime.datetime.now(),"- Sending MQTT online")
+            client.publish("open_weather_radio/status","online")
+            client.publish("open_weather_radio/alerts",json.dumps(build_alert()))
+            mqtt_disconnect(client)
+            time.sleep(300)
+        except Exception as e:
+            print("somethin went wrong: " + str(e))
 
 #Send SAME message when triggered
 def owr_send_alert():
@@ -110,7 +113,7 @@ def owr_send_alert():
     print(TYPE, MSG, ORG, EEE, PSSCCC, TTTT, JJJHHMM, LLLLLLLL, LANG)
     #Send via mqtt
     client = mqtt_connect()
-    print(datetime.datetime.now(),"- Sending EASE Alert via MQTT")
+    print(datetime.datetime.now(),"- Sending EAS Alert via MQTT")
     client.publish("open_weather_radio/status","online")
     client.publish("open_weather_radio/alerts",json.dumps(build_alert(TYPE, MSG, ORG, EEE, PSSCCC, TTTT, JJJHHMM, LLLLLLLL, LANG)))
     mqtt_disconnect(client)
@@ -118,6 +121,6 @@ def owr_send_alert():
     
 #main 
 if sys.argv[1] == 'status':
-    owr_status(s)
+    owr_status()
 else:
    owr_send_alert()
