@@ -9,9 +9,6 @@ import os
 import sched, time
 import datetime;
 
-timesec = 60
-sleep = 1
-s = sched.scheduler(time.time, time.sleep)
 global Connected
 Connected = False
 
